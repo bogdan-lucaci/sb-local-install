@@ -1,0 +1,111 @@
+<IfModule mod_php5.c>
+
+############################################
+## adjust memory limit
+
+    php_value memory_limit 256M
+
+############################################
+## disable magic quotes for php request vars
+
+    php_flag magic_quotes_gpc off
+
+############################################
+## disable automatic session start
+## before autoload was initialized
+
+    php_flag session.auto_start off
+
+</IfModule>
+<IfModule mod_php7.c>
+
+############################################
+## adjust memory limit
+
+    php_value memory_limit 256M
+
+############################################
+## disable magic quotes for php request vars
+
+    php_flag magic_quotes_gpc off
+
+############################################
+## disable automatic session start
+## before autoload was initialized
+
+    php_flag session.auto_start off
+
+</IfModule>
+<IfModule mod_security.c>
+###########################################
+## disable POST processing to not break multiple image upload
+
+    SecFilterEngine Off
+    SecFilterScanPOST Off
+</IfModule>
+
+<IfModule mod_rewrite.c>
+
+############################################
+## enable rewrites
+
+    RewriteEngine on
+
+############################################
+## you can put here your magento root folder
+## path relative to web root
+
+    #RewriteBase /phs/
+
+############################################
+## workaround for HTTP authorization
+## in CGI environment
+
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+    RewriteRule .* - [E=HTTP_CONTENT_TYPE:%{HTTP:Content-Type}]
+
+############################################
+## TRACE and TRACK HTTP methods disabled to prevent XSS attacks
+
+    RewriteCond %{REQUEST_METHOD} ^TRAC[EK]
+    RewriteRule .* - [L,R=405]
+
+    RewriteRule ^api/(v([0-9]+)/|)(.*)$ _api.php?_rw=1&_v=$2&_ar=$3 [QSA,NC,L]
+
+############################################
+## never rewrite for existing files, directories and links
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-l
+
+############################################
+## rewrite everything else to index.php
+
+    RewriteRule .* index.php [L]
+
+</IfModule>
+
+############################################
+## By default allow all access
+
+    <IfVersion < 2.4>
+        order allow,deny
+        allow from all
+    </IfVersion>
+    <IfVersion >= 2.4>
+        Require all granted
+    </IfVersion>
+
+###########################################
+## Deny access to sensitive scripts
+
+    <Files "^(README.md|VERSION|LICENSE|_bg.php|_agent.php|_agent_bg.php|_new_crypt_keys.php)$">
+        <IfVersion < 2.4>
+            order allow,deny
+            deny from all
+        </IfVersion>
+        <IfVersion >= 2.4>
+            Require all denied
+        </IfVersion>
+    </Files>
