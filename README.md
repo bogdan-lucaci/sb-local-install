@@ -54,6 +54,31 @@ instructions for installing locally the Smart Boarding app
     <code>service mysql start</code>
   </li>
   <li>
-    
+    run <code>mysql</code> inside Ubuntu console and create the DB from mysql console<br/>
+    <code>create database kyc_DB;</code><br//>
+    * exit mysql console with <code>CTRL</code>+<code>D</code>
   </li>
+  <li>
+    obtain a DB sql file, rename it to <code>kyc_DB.sql</code> and opy it to <i>&lt;your-local-path&gt;</i><br/>
+    then, copy the DB to mysql install folder<br/>
+    <code>cp -i /mnt/<i>&lt;your-local-path&gt;</i><br/>/kyc_DB.sql /var/lib/mysql/kyc_DB/</code>
+  </li>
+  <li>
+    run <code>mysql</code> inside Ubuntu console and import the DB from mysql console<br/>
+    <code>USE kyc_DB;</code><br/>
+	  <code>SOURCE kyc_DB.sql;</code>
+  </li>
+  <li>
+    also, inside mysql console create your DB user<br/>
+    <code>CREATE USER '<i>&lt;your-username&gt;</i>' @'%' IDENTIFIED BY '<i>&lt;your-password&gt;</i>';</code><br/>
+	  <code>GRANT ALL PRIVILEGES ON * . * TO '<i>&lt;your-username&gt;</i>'@'%';</code>
+  </li>
+  <li>
+    copy <a href="res/make_symlink.sh">this</a> script to <i>&lt;your-local-path&gt;</i> and run it inside Ubuntu<br/>
+    <code>./make_symlink</code>
+  </li>
+  <li>
+  
+  </li>
+  
 </ol>
