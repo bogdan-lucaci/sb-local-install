@@ -94,7 +94,9 @@
   </li>
 	<li>
 		update the following variables inside <code>'<i>&lt;your-local-path&gt;</i>/phs/main.php'</code>:<br/>
-		<code>PHS_DB_USERNAME</code>, <code>PHS_DB_PASSWORD</code>, <code>PHS_DEFAULT_CRYPT_KEY</code> (according to DB env), <code>PHS_DEFAULT_CRYPT_INTERNAL_KEYS_ARR</code> (according to DB env)
+		<code>PHS_DB_USERNAME</code>, <code>PHS_DB_PASSWORD</code>,<br/>
+		<code>PHS_DEFAULT_CRYPT_KEY</code> (according to DB env),<br/>
+		<code>PHS_DEFAULT_CRYPT_INTERNAL_KEYS_ARR</code> (according to DB env)
 	</li>
 	<li>
 		retart both <b>apache</b> and <b>mysql</b> from Ubuntu's console<br/>
