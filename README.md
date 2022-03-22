@@ -79,7 +79,7 @@ instructions for installing locally the Smart Boarding app
     <code>GRANT ALL PRIVILEGES ON * . * TO '<i>&lt;your-username&gt;</i>'@'%';</code>
   </li>
   <li>
-    copy <a href="res/make_symlink.sh">this</a> script to <i>&lt;your-local-path&gt;</i> and run it inside Ubuntu<br/>
+    copy <a href="res/create_symlinks.sh">this</a> script to <i>&lt;your-local-path&gt;</i> and run it inside Ubuntu<br/>
     <code>./create_symlinks</code>
   </li>
   <li>
