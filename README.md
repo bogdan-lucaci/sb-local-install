@@ -1,7 +1,14 @@
 # Smart Boarding local install
-<br/>
-instructions for installing locally the Smart Boarding app
-<br/><br/>
+
+1. [Instructions for installing locally the Smart Boarding app](#summary1)
+1. [Export WSL install under Windows 10](#summary2)
+3. [Import WSL install under Windows 10](#summary3)
+
+---
+
+<br><br>
+## Instructions for installing locally the Smart Boarding app <a name="summary1"></a>
+
 <ol>
   <li>
     clone <b><a href="https://github.com/tipul07/phs">phs</a></b> and <b><a href="https://github.com/Smart2Pay/Onboarding">onboarding</a></b> into <i>&lt;your-local-path&gt;</i><br/>
@@ -98,3 +105,32 @@ instructions for installing locally the Smart Boarding app
 		access <b>http://localhost/phs</b>
 	</li>
 </ol>
+
+---
+<br/><br/>
+## Export WSL install under Windows 10 <a name="summary2"></a>
+<ul>
+	<li>
+		Get a full list of the distribution names<br/>
+		<code>wsl -l -v</code>
+	</li>
+	<li>
+		Use the cd command to navigate into the directory you want to save your export to<br/>
+		<code>wsl --export <i>&lt;distribution-name&gt;</i> <i>&lt;filename&gt;</i>.tar</code><br>
+		e.g.: &nbsp;&nbsp;<i>wsl --export Ubuntu-20.04 ubuntubackup.tar</i>
+	</li>
+</ul>
+<br/>
+
+## Import WSL install under Windows 10 <a name="summary3"></a>
+<ul>
+	<li>
+		<code>wsl --import <i>&lt;distribution-name&gt;</i> <i>&lt;install-location&gt;</i> <i>&lt;backup-location&gt;</i>\<i>&lt;backup-filename&gt;</i>.tar</code><br/>
+		e.g.: &nbsp;&nbsp;<i>wsl --import Ubuntu-20.04 C:\Users\MyPC\AppData\Local\Packages\Ubuntu C:\Users\MyPC\Documents\ubuntubackup.tar</i>
+	</li>
+	<li>
+		To check it was imported correctly, run the <code>wsl --list</code> and you should see your newly imported distribution
+	</li>
+</ul>
+			
+	
