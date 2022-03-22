@@ -15,13 +15,11 @@ instructions for installing locally the Smart Boarding app
     create your user + switch to sudo mode <code>sudo su</code>
   </li>
   <li>
-    type <code>php</code> in console and if php is missing or version is lower than 7.4 -> install php<br/>
-    <code>apt-install php7.4</code><br/>
-    solved some issues in the past:<br/>
+    install php 7.4 and addons<br/>
     <code>apt-get install -y php7.4 php7.4-fpm php7.4-cli php7.4-json php7.4-soap php7.4-xml php7.4-bcmath php7.4-xmlrpc php7.4-bz2 php7.4-curl php7.4-mbstring php7.4-xsl php7.4-gd php7.4-intl php7.4-mysql php7.4-zip php7.4-ssh2</code>
   </li>
 	<li>
-		update default limits inside '<b>/etc/php/7.4/apache2/php.ini</b>'<br/>
+		update the default limits inside '<b>/etc/php/7.4/apache2/php.ini</b>'<br/>
 		<code>upload_max_filesize=64M</code><br/>
 		<code>post_max_size=64M</code>
 	</li>
@@ -42,11 +40,11 @@ instructions for installing locally the Smart Boarding app
     <code>ln -sfn /mnt/<i>&lt;your-local-path&gt;</i> /var/www</code>
   </li>
   <li>
-    disable default site<br/>
+    disable the default site<br/>
     <code>a2dissite 000-default</code>
   </li>
   <li>
-    create <code>www.conf</code> file inside <i>&lt;your-local-path&gt;</i> with <a href="res/www.conf">this</a> content and copy it to apache's sites folder<br/>
+    create <code>www.conf</code> file inside <i>&lt;your-local-path&gt;</i> with <a href="res/www.conf">this</a> content and copy it to apache's sites folder from Ubuntu's console<br/>
     <code>cp -i /mnt/<i>&lt;your-local-path&gt;</i>/www.conf /etc/apache2/sites-available/</code>
   </li>
   <li>
@@ -59,28 +57,30 @@ instructions for installing locally the Smart Boarding app
     <code>service mysql start</code>
   </li>
   <li>
-    run <code>mysql</code> inside Ubuntu console and create the DB from mysql console<br/>
-    <code>create database kyc_DB;</code><br//>
+    open mysql's console and create the DB<br/>
+		<code>mysql</code><br/>
+    <code>create database <i>&lt;your-DB-name&gt;</i>;</code><br//>
     * exit mysql console with <code>CTRL</code>+<code>D</code>
   </li>
   <li>
-    obtain a DB sql file, rename it to <code>kyc_DB.sql</code> and opy it to <i>&lt;your-local-path&gt;</i><br/>
-    then, copy the DB to mysql install folder<br/>
-    <code>cp -i /mnt/<i>&lt;your-local-path&gt;</i><br/>/kyc_DB.sql /var/lib/mysql/kyc_DB/</code>
+    obtain a SmartBoarding DB sql file, rename it to <code><i>&lt;your-DB-name&gt;</i>.sql</code> and copy it to <i>&lt;your-local-path&gt;</i><br/>
+    then, from Ubuntu's console, copy the DB to mysql install folder<br/>
+    <code>cp -i /mnt/<i>&lt;your-local-path&gt;</i>/<i>&lt;your-DB-name&gt;</i>.sql /var/lib/mysql/<i>&lt;your-DB-name&gt;</i>/</code>
   </li>
   <li>
-    run <code>mysql</code> inside Ubuntu console and import the DB from mysql console<br/>
-    <code>USE kyc_DB;</code><br/>
-	  <code>SOURCE kyc_DB.sql;</code>
+    open mysql's console and import the DB<br/>
+		<code>mysql</code><br/>
+    <code>USE <i>&lt;your-DB-name&gt;</i>;</code><br/>
+	  <code>SOURCE <i>&lt;your-DB-name&gt;</i>.sql;</code>
   </li>
   <li>
-    also, inside mysql console create your DB user<br/>
+    still inside mysql console, create your DB user<br/>
     <code>CREATE USER '<i>&lt;your-username&gt;</i>' @'%' IDENTIFIED BY '<i>&lt;your-password&gt;</i>';</code><br/>
     <code>GRANT ALL PRIVILEGES ON * . * TO '<i>&lt;your-username&gt;</i>'@'%';</code>
   </li>
   <li>
     copy <a href="res/make_symlink.sh">this</a> script to <i>&lt;your-local-path&gt;</i> and run it inside Ubuntu<br/>
-    <code>./make_symlink</code>
+    <code>./create_symlinks</code>
   </li>
   <li>
 		create the <code>htaccess</code> file inside '<i>&lt;your-local-path&gt;</i>/phs' with <a href="res/htaccess">this</a> content
@@ -90,7 +90,7 @@ instructions for installing locally the Smart Boarding app
 		<code>PHS_DB_USERNAME</code>, <code>PHS_DB_PASSWORD</code>, <code>PHS_DEFAULT_CRYPT_KEY</code> (according to DB env), <code>PHS_DEFAULT_CRYPT_INTERNAL_KEYS_ARR</code> (according to DB env)
 	</li>
 	<li>
-		retart both <b>apache</b> and <b>mysql</b> from Ubuntu console<br/>
+		retart both <b>apache</b> and <b>mysql</b> from Ubuntu's console<br/>
 		<code>service apache2 restart</code><br/>
 		<code>service mysql restart</code>
 	</li>
