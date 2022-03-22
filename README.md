@@ -19,7 +19,12 @@ instructions for installing locally the Smart Boarding app
     <code>apt-install php7.4</code><br/>
     solved some issues in the past:<br/>
     <code>apt-get install -y php7.4 php7.4-fpm php7.4-cli php7.4-json php7.4-soap php7.4-xml php7.4-bcmath php7.4-xmlrpc php7.4-bz2 php7.4-curl php7.4-mbstring php7.4-xsl php7.4-gd php7.4-intl php7.4-mysql php7.4-zip php7.4-ssh2</code>
-  </li>  
+  </li>
+	<li>
+		update default limits inside '<b>/etc/php/7.4/apache2/php.ini</b>'<br/>
+		<code>upload_max_filesize=64M</code><br/>
+		<code>post_max_size=64M</code>
+	</li>
   <li>
     update all, install some utils (if needed) and apache<br/>
     <code>apt update</code><br/>
@@ -41,7 +46,7 @@ instructions for installing locally the Smart Boarding app
     <code>a2dissite 000-default</code>
   </li>
   <li>
-    create inside your <i>&lt;your-local-path&gt;</i> <code>www.conf</code> file with <a href="res/www.conf">this</a> content and copy it to apache's sites folder<br/>
+    create <code>www.conf</code> file inside <i>&lt;your-local-path&gt;</i> with <a href="res/www.conf">this</a> content and copy it to apache's sites folder<br/>
     <code>cp -i /mnt/<i>&lt;your-local-path&gt;</i>/www.conf /etc/apache2/sites-available/</code>
   </li>
   <li>
@@ -71,14 +76,25 @@ instructions for installing locally the Smart Boarding app
   <li>
     also, inside mysql console create your DB user<br/>
     <code>CREATE USER '<i>&lt;your-username&gt;</i>' @'%' IDENTIFIED BY '<i>&lt;your-password&gt;</i>';</code><br/>
-	  <code>GRANT ALL PRIVILEGES ON * . * TO '<i>&lt;your-username&gt;</i>'@'%';</code>
+    <code>GRANT ALL PRIVILEGES ON * . * TO '<i>&lt;your-username&gt;</i>'@'%';</code>
   </li>
   <li>
     copy <a href="res/make_symlink.sh">this</a> script to <i>&lt;your-local-path&gt;</i> and run it inside Ubuntu<br/>
     <code>./make_symlink</code>
   </li>
   <li>
-  
+		create the <code>htaccess</code> file inside '<i>&lt;your-local-path&gt;</i>/phs' with <a href="res/htaccess">this</a> content
   </li>
-  
+	<li>
+		update the following variables inside <code>'<i>&lt;your-local-path&gt;</i>/phs/main.php'</code>:<br/>
+		<code>PHS_DB_USERNAME</code>, <code>PHS_DB_PASSWORD</code>, <code>PHS_DEFAULT_CRYPT_KEY</code> (according to DB env), <code>PHS_DEFAULT_CRYPT_INTERNAL_KEYS_ARR</code> (according to DB env)
+	</li>
+	<li>
+		retart both <b>apache</b> and <b>mysql</b> from Ubuntu console<br/>
+		<code>service apache2 restart</code><br/>
+		<code>service mysql restart</code>
+	</li>
+	<li>
+		access <b>http://localhost/phs</b>
+	</li>
 </ol>
