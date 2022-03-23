@@ -55,5 +55,5 @@ ln -sf /var/www/onboarding/themes/s2p /var/www/phs/themes/s2p
 ln -sf /var/www/onboarding/themes/ibs /var/www/phs/themes/ibs
 ln -sf /var/www/onboarding/themes/eprice /var/www/phs/themes/eprice
 ln -sf /var/www/onboarding/themes/rinascente /var/www/phs/themes/rinascente
-ln -sf /var/www/onboarding/themes/rinascente /var/www/phs/themes/shopto
-ln -sf /var/www/onboarding/themes/rinascente /var/www/phs/themes/nuvei
+ln -sf /var/www/onboarding/themes/shopto /var/www/phs/themes/shopto
+ln -sf /var/www/onboarding/themes/nuvei /var/www/phs/themes/nuvei
