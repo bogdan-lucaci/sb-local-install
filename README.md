@@ -1,8 +1,9 @@
 # Smart Boarding local install
 
 1. [Instructions for installing locally the Smart Boarding app](#summary1)
-1. [Export WSL install under Windows 10](#summary2)
-3. [Import WSL install under Windows 10](#summary3)
+2. [Update DB](#summary4)
+3. [Export WSL install under Windows 10](#summary2)
+4. [Import WSL install under Windows 10](#summary3)
 
 ---
 
@@ -107,6 +108,12 @@
 		access <b>http://localhost/phs</b>
 	</li>
 </ol>
+<a name="summary4"></a>
+<br/><br/>
+
+## Update the data base to last structure
+from Ubuntu console run
+<code>php /var/www/phs/bin/phs update</code>
 
 ---
 <br/><br/>
