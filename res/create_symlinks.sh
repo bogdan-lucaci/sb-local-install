@@ -48,12 +48,12 @@ ln -sfn /var/www/onboarding/plugins/s2p_trulioo /var/www/phs/plugins/s2p_trulioo
 ln -sfn /var/www/onboarding/plugins/s2p_vidra /var/www/phs/plugins/s2p_vidra
 
 #themes
-ln -sf /var/www/phs/themes/default.dist /var/www/phs/themes/default
-ln -sf /var/www/onboarding/themes/s2p_default /var/www/phs/themes/s2p_default
-ln -sf /var/www/onboarding/themes/s2p_wl /var/www/phs/themes/s2p_wl
-ln -sf /var/www/onboarding/themes/s2p /var/www/phs/themes/s2p
-ln -sf /var/www/onboarding/themes/ibs /var/www/phs/themes/ibs
-ln -sf /var/www/onboarding/themes/eprice /var/www/phs/themes/eprice
-ln -sf /var/www/onboarding/themes/rinascente /var/www/phs/themes/rinascente
-ln -sf /var/www/onboarding/themes/shopto /var/www/phs/themes/shopto
-ln -sf /var/www/onboarding/themes/nuvei /var/www/phs/themes/nuvei
+ln -sfn /var/www/phs/themes/default.dist /var/www/phs/themes/default
+ln -sfn /var/www/onboarding/themes/s2p_default /var/www/phs/themes/s2p_default
+ln -sfn /var/www/onboarding/themes/s2p /var/www/phs/themes/s2p
+ln -sfn /var/www/onboarding/themes/ibs /var/www/phs/themes/ibs
+ln -sfn /var/www/onboarding/themes/eprice /var/www/phs/themes/eprice
+ln -sfn /var/www/onboarding/themes/rinascente /var/www/phs/themes/rinascente
+ln -sfn /var/www/onboarding/themes/shopto /var/www/phs/themes/shopto
+ln -sfn /var/www/onboarding/themes/nuvei /var/www/phs/themes/nuvei
+ln -sfn /var/www/onboarding/themes/besafe /var/www/phs/themes/besafe
